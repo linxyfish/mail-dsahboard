@@ -1,0 +1,10 @@
+{
+  "name": "mail-tg",
+  "private": true,
+  "packageManager": "pnpm@12.0.0",
+  "scripts": {
+    "dev": "pnpm --parallel --filter @mail/server --filter @mail/web dev",
+    "build": "pnpm --filter @mail/shared build && pnpm --filter @mail/server build && pnpm --filter @mail/web build",
+    "typecheck": "pnpm -r typecheck"
+  }
+}

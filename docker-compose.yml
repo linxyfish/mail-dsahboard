@@ -1,0 +1,18 @@
+services:
+  mail-server:
+    build: .
+    env_file: .env
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+  mail-web:
+    image: nginx:alpine
+    volumes:
+      - ./apps/web/dist:/usr/share/nginx/html:ro
+    ports:
+      - "5173:80"
+    depends_on:
+      - mail-server
+    restart: unless-stopped
